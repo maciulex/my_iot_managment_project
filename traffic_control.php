@@ -16,7 +16,7 @@
     else                            $pico_action= $_GET["action"];
     
     $pico_request_header = "pico_id=$pico_id;pico_desc=$pico_desc;action=$pico_action;";
-
+    
     if (strlen($error) > 0) {
         include("report_error.php");
         error_report($error, "request", $pico_request_header);
@@ -39,9 +39,10 @@
             include("get_data/getHarmonogram.php");
             echo get_harmonogram($pico_id);
             exit(0);
-        break;
+            break;
         case "report":
-            include("devices/dev"+str_val($pico_id)+"/report.php");
+        case "raport":
+            include("devices/dev".strval($pico_id)."/report.php");
             exit(0);
         break;
         default:
