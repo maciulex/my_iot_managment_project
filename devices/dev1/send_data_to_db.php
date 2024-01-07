@@ -27,6 +27,7 @@
     
         include "db_credits.php";
         $connection = mysqli_connect($host, $log_account, $log_account_pass, $db);
+    
         $return_val = [];
         for ($i = 0; $i < count($value); $i++) {
             $row  = explode("|", $value[$i]);
@@ -182,6 +183,26 @@
         $stmt -> execute();
         $stmt -> close();
         mysqli_close($connection);
+
+
+        include(__DIR__."/discord_bot_notyfiy.php");
+        status_change(     $GROUP_1_STATUS_E,
+                           $GROUP_2_STATUS_E,
+                           $GROUP_3_STATUS_E,
+                           $GROUP_1_HARMONOGRAM_E,
+                           $GROUP_2_HARMONOGRAM_E,
+                           $GROUP_3_HARMONOGRAM_E,
+                           $DISABLE_GROUP_1_E,
+                           $DISABLE_GROUP_2_E,
+                           $DISABLE_GROUP_3_E,
+                           $FORCE_ENABLE_GROUP_1_E,
+                           $FORCE_ENABLE_GROUP_2_E,
+                           $FORCE_ENABLE_GROUP_3_E,
+                           $HEAT_AND_OFF_GROUP_1_E,
+                           $HEAT_AND_OFF_GROUP_2_E,
+                           $HEAT_AND_OFF_GROUP_3_E,
+                           $SWITCH_1_STATE_E,
+                           $SWITCH_2_STATE_E);
     }
 
 
