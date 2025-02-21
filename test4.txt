@@ -1,0 +1,69 @@
+Array
+(
+    [0] => Array
+        (
+            [ExecMainStatus] => 0
+            [ActiveState] => active
+            [SubState] => running
+            [UnitFileState] => enabled
+            [ActiveEnterTimestamp] => Thu 2025-02-20 13:01:54 CET
+            [name] => controlerphp.service
+            [timeRunning] => 109903
+        )
+
+    [1] => Array
+        (
+            [ExecMainStatus] => 0
+            [ActiveState] => active
+            [SubState] => running
+            [UnitFileState] => enabled
+            [ActiveEnterTimestamp] => Thu 2025-02-20 13:01:54 CET
+            [name] => harmonogramphp.service
+            [timeRunning] => 109903
+        )
+
+    [2] => Array
+        (
+            [ExecMainStatus] => 255
+            [ActiveState] => activating
+            [SubState] => auto-restart
+            [UnitFileState] => enabled
+            [ActiveEnterTimestamp] => Fri 2025-02-21 19:33:35 CET
+            [name] => temperaturephp.service
+            [timeRunning] => 2
+        )
+
+    [3] => Array
+        (
+            [ExecMainStatus] => 0
+            [ActiveState] => active
+            [SubState] => running
+            [UnitFileState] => enabled
+            [ActiveEnterTimestamp] => Thu 2025-02-20 13:01:54 CET
+            [name] => powerphp.service
+            [timeRunning] => 109904
+        )
+
+    [4] => Array
+        (
+            [ExecMainStatus] => 0
+            [ActiveState] => active
+            [SubState] => running
+            [UnitFileState] => enabled
+            [ActiveEnterTimestamp] => Fri 2025-02-21 19:33:37 CET
+            [name] => reportphp.service
+            [timeRunning] => 1
+        )
+
+    [5] => Array
+        (
+            [ExecMainStatus] => 0
+            [ActiveState] => activating
+            [SubState] => auto-restart
+            [UnitFileState] => enabled
+            [ActiveEnterTimestamp] => Fri 2025-02-21 19:33:15 CET
+            [name] => pingphp.service
+            [timeRunning] => 23
+        )
+
+)

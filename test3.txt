@@ -1,0 +1,11 @@
+Array
+(
+    [id] => 3233317
+    [voltage] => 219.2
+    [amps] => 0.188
+    [wats] => 29
+    [wathours] => 513
+    [powerfactor] => 0.7
+    [frequency] => 50
+    [time] => 2025-02-21 19:33:35
+)

@@ -40,6 +40,15 @@
             echo get_harmonogram($pico_id);
             exit(0);
             break;
+        case "getHarmonogram2":
+            include("get_data/getHarmonogram.php");
+            echo get_harmonogram2($pico_id);
+            exit(0);
+            break;
+        case "ping":
+            include("set_data/ping.php");
+            ping($pico_id);
+            break;
         case "report":
         case "raport":
             include("devices/dev".strval($pico_id)."/report.php");

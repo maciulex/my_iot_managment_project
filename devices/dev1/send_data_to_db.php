@@ -24,6 +24,8 @@
         $TEMP_TRESHOLD_CO_FOR_HEAT_AND_OFF_E = -127;
         $SWITCH_1_STATE_E = -127;
         $SWITCH_2_STATE_E = -127;
+
+        $temp_reset_required = false;
     
         include "db_credits.php";
         $connection = mysqli_connect($host, $log_account, $log_account_pass, $db);
@@ -117,6 +119,17 @@
                     print_r($row);
                     echo "<br>";
                     print_r($data);
+
+                    if (
+                        $temp_furnace_out       > 120 ||    
+                        $temp_furnace_return    > 120 ||        
+                        $temp_CO_out            > 120 ||
+                        $temp_CO_return         > 120 ||
+                        $temp_boiler            > 120
+                    ) {
+                        $temp_reset_required = true;
+                        break;
+                    }
     
                     $sql = "INSERT INTO `".$db_pre."temperatura` (output_furnace, return_furnace, output_co, return_co, boiler) VALUES (?,?,?,?,?);";
                     $stmt = $connection -> prepare($sql);
@@ -203,6 +216,11 @@
                            $HEAT_AND_OFF_GROUP_3_E,
                            $SWITCH_1_STATE_E,
                            $SWITCH_2_STATE_E);
+    }
+
+
+    if ($temp_reset_required == true) {
+        file_get_contents("http://192.168.1.2/newSystem/devices/dev1/set_registers.php?registers=15|0");
     }
 
 

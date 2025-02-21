@@ -26,7 +26,7 @@
         $HEAT_AND_OFF_GROUP_2_E,
         $HEAT_AND_OFF_GROUP_3_E,
         $SWITCH_1_STATE_E,
-        $SWITCH_2_STATE_E, $db = "pico_devices_dev3"
+        $SWITCH_2_STATE_E, $db = "pico_devices_dev1"
     ) {
         include(__DIR__."/../../db_credits.php");
         $connection = mysqli_connect($host, $log_account, $log_account_pass, $db);
