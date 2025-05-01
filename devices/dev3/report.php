@@ -28,11 +28,11 @@
             $service[$k[1]][$k[0]] = $value;
         }
     }
-    file_put_contents("test0.txt", print_r( $_POST    ,true));
-    file_put_contents("test1.txt", print_r( $internal ,true));
-    file_put_contents("test2.txt", print_r( $external ,true));
-    file_put_contents("test3.txt", print_r( $power    ,true));
-    file_put_contents("test4.txt", print_r( $service  ,true));
+    //file_put_contents("test0.txt", print_r( $_POST    ,true));
+    //file_put_contents("test1.txt", print_r( $internal ,true));
+    //file_put_contents("test2.txt", print_r( $external ,true));
+    //file_put_contents("test3.txt", print_r( $power    ,true));
+    //file_put_contents("test4.txt", print_r( $service  ,true));
 
 
 

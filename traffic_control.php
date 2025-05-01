@@ -4,7 +4,7 @@
     $pico_id    = -1;
     $pico_desc  ="";
     $pico_action="";
-
+    $client_ip = $_SERVER['REMOTE_ADDR'];
 
     if (!isset($_GET["pico_id"]))   $error .= "no_pico_id;";
     else                            $pico_id    = $_GET["pico_id"];
@@ -19,17 +19,17 @@
     
     if (strlen($error) > 0) {
         include("report_error.php");
-        error_report($error, "request", $pico_request_header);
+        error_report($error, "request", $pico_request_header,$client_ip);
         exit(501);
     }
 
     include("log.php");
-    log_header_request($pico_request_header);
+    log_header_request($pico_request_header, $client_ip);
 
     switch ($pico_action) {
         case "bootAck":
-            if (isset($_GET["boot_mess"])) log_boot_ack($pico_id, $pico_desc,$_GET["boot_mess"]);
-            else                           log_boot_ack($pico_id, $pico_desc);
+            if (isset($_GET["boot_mess"])) log_boot_ack($pico_id, $pico_desc, $client_ip, $_GET["boot_mess"]);
+            else                           log_boot_ack($pico_id, $pico_desc, $client_ip);
         break;
         case "getTime":
             include("echo/getTimeWithSeparator.php");
@@ -45,9 +45,14 @@
             echo get_harmonogram2($pico_id);
             exit(0);
             break;
+        case "getOwnHarmonogram":
+            include("devices/dev".strval($pico_id)."/getHarmonogram.php");
+            echo getOwnHarmonogram();
+            exit(0);
+            break;
         case "ping":
             include("set_data/ping.php");
-            ping($pico_id);
+            ping($pico_id, $client_ip);
             break;
         case "report":
         case "raport":
@@ -55,7 +60,7 @@
             exit(0);
         break;
         default:
-            error_report("unknown_action", "request", $pico_request_header);
+            error_report("unknown_action", "request", $pico_request_header, $client_ip);
         break;
     }
 
