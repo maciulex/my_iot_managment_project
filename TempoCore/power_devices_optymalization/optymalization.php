@@ -26,8 +26,10 @@
         while ($row = $result -> fetch_assoc()) {
             $last_id = $row["id"];
 
+            if (intval($row["change"]) < 0) continue; //skiping when power was resetted :sadge:
+
             $date_time = strtotime($row["time"]);
-            $year_week = date('Y-W'      , $date_time);
+            $year_week = date('Y-W'     , $date_time);
             $year      = date("Y"      , $date_time);
             $month     = date("Y-m"    , $date_time); 
             $day       = date("Y-m-d"  , $date_time); 

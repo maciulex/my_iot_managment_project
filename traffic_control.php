@@ -9,6 +9,8 @@
     if (!isset($_GET["pico_id"]))   $error .= "no_pico_id;";
     else                            $pico_id    = $_GET["pico_id"];
 
+    // if ($pico_id == intval(7)) sleep(20);
+
     if (!isset($_GET["pico_desc"])) $error .= "no_pico_desc;";
     else                            $pico_desc  = $_GET["pico_desc"];
 
@@ -25,11 +27,13 @@
 
     include("log.php");
     log_header_request($pico_request_header, $client_ip);
-
+    $additional_data = "";
     switch ($pico_action) {
         case "bootAck":
-            if (isset($_GET["boot_mess"])) log_boot_ack($pico_id, $pico_desc, $client_ip, $_GET["boot_mess"]);
-            else                           log_boot_ack($pico_id, $pico_desc, $client_ip);
+            if (isset($_GET["boot_mess"])) $additional_data.=$_GET["boot_mess"]." ";
+            if (isset($_GET["version"]))   $additional_data.="version:".$_GET["version"];
+
+            log_boot_ack($pico_id, $pico_desc, $client_ip, $additional_data);
         break;
         case "getTime":
             include("echo/getTimeWithSeparator.php");
@@ -60,6 +64,7 @@
             exit(0);
         break;
         default:
+            include("report_error.php");
             error_report("unknown_action", "request", $pico_request_header, $client_ip);
         break;
     }
